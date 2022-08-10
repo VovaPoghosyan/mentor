@@ -15,3 +15,4 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::get('/', [EmployeeController::class, 'index']);
+Route::post('/', [EmployeeController::class, 'upload']);

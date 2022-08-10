@@ -15,7 +15,7 @@ class Employee extends Model
         'name',
         'email',
         'division',
-        'birthday',
-        'utc_offset',
+        'age',
+        'timezone',
     ];
 }

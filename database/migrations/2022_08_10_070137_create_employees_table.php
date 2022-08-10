@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('division');
-            $table->date('birthday');
-            $table->integer('utc_offset');
+            $table->integer('age');
+            $table->integer('timezone');
             $table->timestamps();
         });
     }
