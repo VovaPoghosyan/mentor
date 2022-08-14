@@ -28,6 +28,19 @@
                     </form>
                   </div>
             </div>
+
+            @if ($errors->any())
+                <div class="container alert-container">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                <strong>Error!</strong>
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -35,47 +48,51 @@
 
 
     <section class="table-section">
-        <h1>Employees list</h1>
+        @if (count($employees))
+            <h1>Employees list</h1>
 
-        <div class="table-container">
-            <div class="tbl-header">
-                <table cellpadding="0" cellspacing="0" border="0">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Division</th>
-                            <th>Age</th>
-                            <th>Timezone</th>
-                            <th>Recomendation</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
-                    <tbody>
-                        @foreach ($employees as $employee)
+            <div class="table-container">
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
                             <tr>
-                                <td>{{ $employee['id'] }}</td>
-                                <td>{{ $employee['name'] }}</td>
-                                <td>{{ $employee['email'] }}</td>
-                                <td>{{ $employee['division'] }}</td>
-                                <td>{{ $employee['age'] }}</td>
-                                <td>{{ $employee['timezone'] }}</td>
-                                <td class="recomend">
-                                    <a href="/employee/{{$employee['id']}}/recomend" class="check-recomend">Check</a>
-                                </td>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Division</th>
+                                <th>Age</th>
+                                <th>Timezone</th>
+                                <th>Recomendation</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            @foreach ($employees as $employee)
+                                <tr>
+                                    <td>{{ $employee['id'] }}</td>
+                                    <td>{{ $employee['name'] }}</td>
+                                    <td>{{ $employee['email'] }}</td>
+                                    <td>{{ $employee['division'] }}</td>
+                                    <td>{{ $employee['age'] }}</td>
+                                    <td>{{ $employee['timezone'] }}</td>
+                                    <td class="recomend">
+                                        <a href="/employee/{{$employee['id']}}/recomend" class="check-recomend">Check</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div class="pagination d_flex j_cnt__center">
-            {{ $employees->links() }}
-        </div>
+            <div class="pagination d_flex j_cnt__center">
+                {{ $employees->links() }}
+            </div>
+        @else
+            <h1>Employees list is empty</h1>
+        @endif
     </section>
 
 @endsection

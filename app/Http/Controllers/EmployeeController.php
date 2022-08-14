@@ -58,6 +58,10 @@ class EmployeeController extends Controller
 
     public function upload(Request $request)
     {
+        $request->validate([
+            'employees' => 'required|mimes:csv,xlsx,xls',
+        ]);
+
         $file = $request->file('employees')->store('import');
         Excel::import(new EmployeesImport,  $file);
         

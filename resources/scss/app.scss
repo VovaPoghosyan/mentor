@@ -27,6 +27,12 @@
       border-color: rgba(38, 179, 3, 1);
       color: rgba(60, 118, 61, 1);
     }
+
+    .alert.alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+    }
 }
 
 @keyframes cssAnimation {
@@ -156,6 +162,10 @@
         font-size: 18px;
         color: $white;
         text-transform: uppercase;
+
+        &:first-child {
+          width: 50px;
+        }
       }
 
       td {
@@ -166,6 +176,13 @@
         font-size: 16px;
         color: $white;
         border-bottom: solid 1px rgba(255,255,255,0.1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:first-child {
+          width: 50px;
+        }
 
         &.recomend {
           padding-left: 30px;
@@ -180,6 +197,14 @@
   }
 }
 // SECTION-TABLE-STYLE-END
+
+.section-go-back {
+  span {
+    color: #fff;
+    font-weight: 600;
+    padding-left: 15px;
+  }
+}
 
 
 footer {
