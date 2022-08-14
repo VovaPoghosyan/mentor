@@ -1,0 +1,83 @@
+@import './_mixins.scss';
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+section{
+    padding: 50px;
+}
+
+h1 {
+    font-size: 30px;
+    color: $mainColor;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+main {
+    flex-grow: 1;
+}
+
+header, main, footer {
+    flex-shrink: 0;
+}
+
+.bold {
+    @include font(10px, bold);
+	font-family: "Montserrat";
+}
+
+.pagination {
+    padding-top: 10px;
+    .page-item {
+        display: inline-block;
+        padding: 10px;
+
+        &.disabled {
+            cursor: no-drop;
+        }
+
+        &.active .page-link {
+            opacity: 0.5;
+        }
+
+        .page-link {
+            border: none;
+            background-color: transparent;
+            font-size: 18px;
+            color: $white;
+    
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+  } 
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } 
+  ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  }

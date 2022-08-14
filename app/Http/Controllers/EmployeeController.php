@@ -19,13 +19,19 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::paginate(constants('PER_PAGE'));
+
         return view('employee')->with(compact('employees'));
     }
 
     public function recomend($employee_id)
     {
         $employee =  Employee::find($employee_id);
-        $recumandation = Employee::query()
+
+        if (!$employee) {
+            return redirect('/');
+        }
+
+        $recomendations = Employee::query()
             ->where('id', '!=', $employee_id)
             ->select([
                 '*',
@@ -35,7 +41,7 @@ class EmployeeController extends Controller
                         ELSE 0
                     END) +
                     (CASE 
-                        WHEN CAST( employees.age - '. $employee->age .' AS UNSIGNED ) <= ' . constants('MAX_AGE_DIFF') .' THEN 30
+                        WHEN ABS( employees.age - '. $employee->age .') <= ' . constants('MAX_AGE_DIFF') .' THEN 30
                         ELSE 0
                     END) +
                     (CASE 
@@ -47,7 +53,7 @@ class EmployeeController extends Controller
             ->get()
             ->sortByDesc('percent');
 
-        return $recumandation;
+        return view('recomendation')->with(compact('recomendations', 'employee'));
     }
 
     public function upload(Request $request)
@@ -55,6 +61,6 @@ class EmployeeController extends Controller
         $file = $request->file('employees')->store('import');
         Excel::import(new EmployeesImport,  $file);
         
-        return redirect('/')->with('success', 'All good!');
+        return redirect()->back()->with('success', true);
     }
 }

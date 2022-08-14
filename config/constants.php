@@ -2,5 +2,5 @@
 
 return [
     'MAX_AGE_DIFF' => 5,
-    'PER_PAGE'     => 10,
+    'PER_PAGE'     => 15,
 ];
