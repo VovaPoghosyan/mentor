@@ -35,6 +35,14 @@
     }
 }
 
+.check-matches {
+  a {
+    color: $white;
+    font-size: 20px;
+    border-bottom: 1px solid $white;
+  }
+}
+
 @keyframes cssAnimation {
   to {
       width:0;
@@ -163,7 +171,7 @@
         color: $white;
         text-transform: uppercase;
 
-        &:first-child {
+        &.small {
           width: 50px;
         }
       }
@@ -180,7 +188,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
 
-        &:first-child {
+        &.small {
           width: 50px;
         }
 

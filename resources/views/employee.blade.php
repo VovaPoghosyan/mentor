@@ -50,13 +50,16 @@
     <section class="table-section">
         @if (count($employees))
             <h1>Employees list</h1>
+            <div class="d_flex j_cnt__center check-matches">
+                <a href="/matches">Check Matches</a>
+            </div>
 
             <div class="table-container">
                 <div class="tbl-header">
                     <table cellpadding="0" cellspacing="0" border="0">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th class="small">Id</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Division</th>
@@ -72,7 +75,7 @@
                         <tbody>
                             @foreach ($employees as $employee)
                                 <tr>
-                                    <td>{{ $employee['id'] }}</td>
+                                    <td class="small">{{ $employee['id'] }}</td>
                                     <td>{{ $employee['name'] }}</td>
                                     <td>{{ $employee['email'] }}</td>
                                     <td>{{ $employee['division'] }}</td>
